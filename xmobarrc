@@ -1,0 +1,27 @@
+Config { overrideRedirect = False
+       , font     = "xft:iosevka-9"
+       , additionalFonts = [ "xft:Iosevka-10"
+                           ,"xft:Font Awesome 6 Free Solid:pixelsize=14"
+                           , "xft:Font Awesome 6 Brands:pixelsize=14"
+                           ]
+       , bgColor  = "#2e3440"
+       , fgColor  = "#f8f8f2"
+       , position = TopW L 100
+       , commands = [ Run Alsa "default" "Master"
+                        [ "--template", "<fc=#8be9fd>\xf028</fc> <volumestatus>"
+                        , "--suffix"  , "True"
+                        , "--"
+                        , "--on", ""
+                        ]
+                    , Run Memory ["--template", "<fc=#8be9fd><fn=1>\xf85a</fn></fc> <usedratio>%"] 10
+                    , Run Date "<fc=#8be9fd>\xf073</fc> %a %Y-%m-%d | <fc=#8be9fd><fn=1>\xf64f</fn></fc>%l:%M%P" "date" 10
+
+                    , Run Com "bash" ["/home/luis/.bin/get-diskspace"] "diskspace" 600
+                    , Run Com "echo" ["<fc=#8be9fd>\xf0c7</fc>"] "flop" 3600
+
+                    , Run UnsafeXMonadLog
+                    ]
+       , sepChar  = "%"
+       , alignSep = "}{"
+       , template = "%UnsafeXMonadLog% }{ %flop% %diskspace% | %alsa:default:Master% | %memory% | %date% "
+       }
