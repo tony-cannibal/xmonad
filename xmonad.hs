@@ -101,7 +101,7 @@ myConfig = def
     , ("M-<Left>"        ,    prevWS                                   )
     , ("M-<KP_Add>"      ,    spawn  "/home/luis/.bin/vol-up"          )
     , ("M-<KP_Subtract>" ,    spawn  "/home/luis/.bin/vol-down"        )
-    , ("M-<KP_Multiply>" ,    spawn  "/home/luis/.bin/vol-toggle"   )
+    , ("M-<KP_Multiply>" ,    spawn  "/home/luis/.bin/vol-toggle"      )
     ]
 
 
